@@ -1,5 +1,7 @@
 package Recursion_Basic;
 
+import java.util.Arrays;
+
 public class Recursion_Basicproblems {
     // Printing N times
     static void printNtime (int n, String name) {
@@ -34,7 +36,18 @@ public class Recursion_Basicproblems {
         return n * factorialN(n-1);
     }
 
+    // Reverse Array
+    static void reverseArr (int[] arr, int l, int r) {
+        if (l >= r) return;
+        int temp = arr[l];
+        arr[l] = arr[r];
+        arr[r] = temp;
+        reverseArr(arr,l+1,r-1);
+    }
     public static void main(String[] args) {
-        System.out.println(factorialN(5));
+        int[] arr = {1,2,3,4,5};
+        System.out.println(Arrays.toString(arr));
+        reverseArr(arr,0,arr.length-1);
+        System.out.println(Arrays.toString(arr));
     }
 }
