@@ -44,10 +44,25 @@ public class Recursion_Basicproblems {
         arr[r] = temp;
         reverseArr(arr,l+1,r-1);
     }
+
+    // Palindrome Check
+    static void checkPalindrome (String s, int l, int r) {
+        if (l >= r) {
+            System.out.println("True");
+            return;
+        }
+        if (s.charAt(l) != s.charAt(r)) {
+            System.out.println("False");
+            return;
+        }
+        checkPalindrome(s,l+1,r-1);
+    }
+
+
     public static void main(String[] args) {
-        int[] arr = {1,2,3,4,5};
-        System.out.println(Arrays.toString(arr));
-        reverseArr(arr,0,arr.length-1);
-        System.out.println(Arrays.toString(arr));
+        // int[] arr = {1,2,3,4,5};
+        //System.out.println(Arrays.toString(arr));
+        String s = "mnom";
+        checkPalindrome(s,0,s.length()-1);
     }
 }
