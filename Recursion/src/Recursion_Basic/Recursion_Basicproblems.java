@@ -58,11 +58,18 @@ public class Recursion_Basicproblems {
         checkPalindrome(s,l+1,r-1);
     }
 
+    // Fibonacci Number
+    static int fibonacci (int n) {
+        if (n <= 1) return n;
+        return fibonacci(n-1) + fibonacci(n-2);
+    }
+
 
     public static void main(String[] args) {
         // int[] arr = {1,2,3,4,5};
-        //System.out.println(Arrays.toString(arr));
-        String s = "mnom";
-        checkPalindrome(s,0,s.length()-1);
+        // System.out.println(Arrays.toString(arr));
+        // String s = "mnom";
+        // checkPalindrome(s,0,s.length()-1);
+        System.out.println(fibonacci(6));
     }
 }
