@@ -32,7 +32,7 @@ public class Recursion_Atoi {
         return helper(s, ans, i, sign);
     }
     public static void main(String[] args) {
-        String s = "   42";
+        String s = "   -7126764714613946342";
         System.out.println(myAtoi(s));
     }
 }
