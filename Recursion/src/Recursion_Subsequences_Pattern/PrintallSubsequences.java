@@ -16,6 +16,7 @@ public class PrintallSubsequences {
         list.remove(list.size()-1);
         subsequences(arr, index+1, list);
     }
+
     public static void main(String[] args) {
         int[] arr = {1,2,3};
         ArrayList<Integer> list = new ArrayList<>();
