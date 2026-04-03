@@ -5,8 +5,8 @@ public class SetOrNot_ithBit {
         return ((n>>i) & 1) == 1;
     }
     public static void main(String[] args) {
-        int n = 5;
-        int i = 0;
+        int n = 13;
+        int i = 3;
         System.out.println(setOrNot(n,i));
     }
 }
