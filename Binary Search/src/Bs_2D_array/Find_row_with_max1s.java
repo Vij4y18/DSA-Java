@@ -11,7 +11,6 @@ public class Find_row_with_max1s {
 
             while(low<=high) {
                 int mid = (low+high)/2;
-
                 if(matrix[i][mid] >= 1) {
                     high = mid - 1;
                 } else {
