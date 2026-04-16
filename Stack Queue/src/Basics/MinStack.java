@@ -41,9 +41,57 @@ class MinStackBrute {
     }
 }
 
+
+class MinStackOptimal {
+
+    Stack<Long> st;
+    long min;
+
+    public MinStackOptimal() {
+        st = new Stack<>();
+    }
+
+    public void push(int val) {
+        long v = val;
+
+        if (st.isEmpty()) {
+            st.push(v);
+            min = v;
+        } else {
+            if (v >= min) {
+                st.push(v);
+            } else {
+                st.push(2 * v - min); // encoded value
+                min = v;
+            }
+        }
+    }
+
+    public void pop() {
+        if (st.isEmpty()) return;
+
+        long x = st.pop();
+
+        if (x < min) {
+            min = 2 * min - x; // restore previous min
+        }
+    }
+
+    public int top() {
+        long x = st.peek();
+
+        if (x >= min) return (int)x;
+        else return (int)min;
+    }
+
+    public int getMin() {
+        return (int)min;
+    }
+}
+
 public class MinStack {
     public static void main(String[] args) {
-        MinStackBrute st = new MinStackBrute();
+        MinStackOptimal st = new MinStackOptimal();
 
         st.push(8);
         st.push(9);
