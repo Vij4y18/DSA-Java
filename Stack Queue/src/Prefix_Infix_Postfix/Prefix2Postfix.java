@@ -2,11 +2,14 @@ package Prefix_Infix_Postfix;
 
 import java.util.Stack;
 
-public class Postfix2Prefix {
+public class Prefix2Postfix {
 
-    // You can also Do postfix to infix and infix to prefix as well but this is optimised approach
-    static String postifx2Prefix (String s) {
+    static String prefix2Postfix(String s) {
         Stack<String> st = new Stack<>();
+
+        StringBuilder str = new StringBuilder(s);
+        str.reverse();
+        s = str.toString();
 
         for (Character i : s.toCharArray()) {
             if ((i >= 'A' && i <= 'Z') || (i >= 'a' && i <= 'z') || (i >= '0' && i <= '9')) {
@@ -14,7 +17,8 @@ public class Postfix2Prefix {
             } else {
                 String t1 = st.pop();
                 String t2 = st.pop();
-                String connect = String.valueOf(i) + t2 + t1;
+
+                String connect = t1 + t2 + String.valueOf(i);
                 st.push(connect);
             }
         }
@@ -22,7 +26,7 @@ public class Postfix2Prefix {
     }
 
     public static void main(String[] args) {
-        String s = "AB-DE+F*/";
-        System.out.println(postifx2Prefix(s));
+        String s = "/-AB*+DEF";
+        System.out.println(prefix2Postfix(s));
     }
 }
