@@ -19,8 +19,6 @@ class Solution {
         }
         return ans;
     }
-
-    // Previous Smaller or Equal Element
     private int[] findPSEE(int[] arr) {
         int n = arr.length;
         int[] ans = new int[n];
