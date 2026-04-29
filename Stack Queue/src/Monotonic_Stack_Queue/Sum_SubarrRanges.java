@@ -17,9 +17,16 @@ public class Sum_SubarrRanges {
         return total;
     }
 
+    static long subArrayRangesOptimal(int[] nums) {
+        int maxSum = Sum_SubarrMaxs.sumSubarrayMaxs(nums); // Used Sum of Subarray Maximums
+        int minSum = Sum_SubarrMins.sumSubarrayMins(nums); // Used sum of subarray Minimums
+
+        return (long) maxSum - minSum;
+    }
+
     public static void main(String[] args) {
         int[] nums = {1,2,3};
 
-        System.out.println(subArrayRanges(nums));
+        System.out.println(subArrayRangesOptimal(nums));
     }
 }

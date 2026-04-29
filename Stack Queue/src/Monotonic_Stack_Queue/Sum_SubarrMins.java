@@ -2,10 +2,10 @@ package Monotonic_Stack_Queue;
 
 import java.util.*;
 
-class Solution {
+public class Sum_SubarrMins {
 
     // Next Smaller Element (strictly smaller on right)
-    private int[] findNSE(int[] arr) {
+    static int[] findNSE(int[] arr) {
         int n = arr.length;
         int[] ans = new int[n];
         Stack<Integer> st = new Stack<>();
@@ -19,7 +19,7 @@ class Solution {
         }
         return ans;
     }
-    private int[] findPSEE(int[] arr) {
+    static int[] findPSEE(int[] arr) {
         int n = arr.length;
         int[] ans = new int[n];
         Stack<Integer> st = new Stack<>();
@@ -34,7 +34,7 @@ class Solution {
         return ans;
     }
 
-    public int sumSubarrayMins(int[] arr) {
+    static int sumSubarrayMins(int[] arr) {
         int n = arr.length;
         int mod = (int)1e9 + 7;
 
@@ -53,15 +53,10 @@ class Solution {
 
         return (int) sum;
     }
-}
 
-public class Sum_SubarrMins {
     public static void main(String[] args) {
         int[] arr = {3, 1, 2, 5};
 
-        Solution sol = new Solution();
-        int ans = sol.sumSubarrayMins(arr);
-
-        System.out.println("The sum of minimum value in each subarray is: " + ans);
+        System.out.println(sumSubarrayMins(arr));
     }
 }
