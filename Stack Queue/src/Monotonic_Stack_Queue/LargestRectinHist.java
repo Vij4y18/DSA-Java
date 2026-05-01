@@ -43,11 +43,38 @@ class Solution {
 }
 
 public class LargestRectinHist {
+
+    static int largestRectangleAreaOptimal(int[] heights) {
+        int maxArea = 0;
+        Stack<Integer> st = new Stack<>();
+
+        for(int i=0; i<heights.length; i++) {
+            while (!st.isEmpty() && heights[st.peek()] > heights[i]) {
+                int element = heights[st.pop()];
+                int nse = i;
+                int pse = st.isEmpty() ? -1 : st.peek();
+
+                maxArea = Math.max(maxArea, element*(nse-pse-1));
+            }
+            st.push(i);
+        }
+
+        while(!st.isEmpty()) {
+            int element = heights[st.pop()];
+            int nse = heights.length;
+            int pse = st.isEmpty() ? -1 : st.peek();
+
+            maxArea = Math.max(maxArea, element*(nse-pse-1));
+        }
+
+        return maxArea;
+    }
+
     public static void main(String[] args) {
-        Solution obj = new Solution();
+        // Solution obj = new Solution();
         int[] heights = {2,1,5,6,2,3};
 
-        int ans = obj.largestRectangleArea(heights);
-        System.out.println(ans);
+        // int ans = obj.largestRectangleArea(heights);
+        System.out.println(largestRectangleAreaOptimal(heights));
     }
 }
