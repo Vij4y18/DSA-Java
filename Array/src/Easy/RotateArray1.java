@@ -2,6 +2,10 @@ package Easy;
 
 import java.util.Arrays;
 
+/*
+Brute is to create an Dummy Array and store the value as you want...
+ */
+
 public class RotateArray1 {
 
     static int[] leftRotate (int[] nums) {
