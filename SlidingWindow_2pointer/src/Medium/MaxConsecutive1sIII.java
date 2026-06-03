@@ -1,6 +1,27 @@
 package Medium;
 
 public class MaxConsecutive1sIII {
+
+    static int nestedApproach (int[] nums, int k) {
+        int maxLen = 0;
+
+        for (int i=0; i<nums.length; i++) {
+            int zeros = 0;
+            for (int j=i; j<nums.length; j++) {
+                if (nums[j] == 0) {
+                    zeros++;
+                }
+
+                if (zeros <= k) {
+                    maxLen = Math.max(maxLen, j-i+1);
+                } else {
+                    break;
+                }
+            }
+        }
+        return maxLen;
+    }
+
     static int slidingWindowMaxOnes (int[] nums, int k) {
         int left = 0;
         int zeros = 0;
@@ -28,5 +49,6 @@ public class MaxConsecutive1sIII {
         int[] nums = {1,1,1,0,0,0,1,1,1,1,0};
         int k = 2;
         System.out.println(slidingWindowMaxOnes(nums,k));
+        System.out.println(nestedApproach(nums, k));
     }
 }
