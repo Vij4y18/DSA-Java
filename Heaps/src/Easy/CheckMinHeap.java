@@ -1,4 +1,4 @@
-package Esay;
+package Easy;
 
 // CHECK IF AN ARRAY REPRESENTS A MIN HEAP
 

@@ -1,17 +1,16 @@
-package Esay;
+package Easy;
 
-import java.sql.Array;
 import java.util.ArrayList;
 
-class HeapMin {
+class MaximumHeap {
     ArrayList<Integer> heap;
 
-    HeapMin() {
+    MaximumHeap() {
         heap = new ArrayList<>();
     }
 
     int parent(int i) {
-      return (i-1)/2;
+        return (i-1)/2;
     }
 
     int leftChild(int i) {
@@ -28,13 +27,12 @@ class HeapMin {
         heap.set(j,temp);
     }
 
-    void insert(int value) {
+    void insert (int value) {
         heap.add(value);
-
         int index = heap.size()-1;
 
-        while (index > 0 && heap.get(parent(index)) > heap.get(index)) {
-            swap(index,parent(index));
+        while (index > 0 && heap.get(parent(index)) < heap.get(index)) {
+            swap(parent(index), index);
             index = parent(index);
         }
     }
@@ -42,25 +40,23 @@ class HeapMin {
     void print() {
         System.out.println(heap);
     }
-
 }
 
-public class MinHeap {
+public class MaxHeap {
     public static void main(String[] args) {
-        HeapMin minheap = new HeapMin();
+        MaximumHeap maxHeap = new MaximumHeap();
 
-        minheap.insert(8);
-        minheap.insert(10);
-        minheap.insert(7);
-        minheap.insert(9);
-        minheap.insert(11);
-        minheap.insert(12);
-        minheap.insert(14);
-        minheap.insert(13);
+        maxHeap.insert(9);
+        maxHeap.insert(6);
+        maxHeap.insert(5);
+        maxHeap.insert(7);
+        maxHeap.insert(13);
+        maxHeap.insert(10);
+        maxHeap.insert(11);
+        maxHeap.insert(14);
+        maxHeap.insert(12);
+        maxHeap.insert(1);
 
-        minheap.print();
-
-        minheap.insert(2);
-        minheap.print();
+        maxHeap.print();
     }
 }
