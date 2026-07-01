@@ -37,6 +37,32 @@ class HeapMin {
             index = parent(index);
         }
     }
+    void delete() {
+        heap.set(0,heap.get(heap.size()-1));
+        heap.remove(heap.size()-1);
+
+        int index = 0;
+
+        while (leftChild(index) < heap.size()) {
+
+            int smallerChild = leftChild(index);
+
+            // If right child exists and is smaller, choose right child
+            if (rightChild(index) < heap.size() &&
+                    heap.get(rightChild(index)) < heap.get(leftChild(index))) {
+                smallerChild = rightChild(index);
+            }
+
+            // Heap property satisfied
+            if (heap.get(index) <= heap.get(smallerChild)) {
+                break;
+            }
+
+            // Swap with smaller child
+            swap(index, smallerChild);
+            index = smallerChild;
+        }
+    }
 
     void print() {
         System.out.println(heap);
@@ -60,6 +86,9 @@ public class MinHeap {
         minheap.print();
 
         minheap.insert(2);
+        minheap.print();
+
+        minheap.delete();
         minheap.print();
     }
 }
