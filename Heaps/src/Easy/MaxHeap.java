@@ -37,8 +37,40 @@ class MaximumHeap {
         }
     }
 
+    int delete() {
+        if(isEmpty()) return -1;
+        int root = heap.get(0);
+        heap.set(0, heap.get(heap.size() - 1));
+        heap.remove(heap.size() - 1);
+
+        int index = 0;
+
+        while (leftChild(index) < heap.size()) {
+
+            int largerChild = leftChild(index);
+
+            if (rightChild(index) < heap.size() &&
+                    heap.get(rightChild(index)) > heap.get(leftChild(index))) {
+                largerChild = rightChild(index);
+            }
+
+            // Heap property satisfied
+            if (heap.get(index) >= heap.get(largerChild)) {
+                break;
+            }
+
+            swap(index, largerChild);
+            index = largerChild;
+        }
+        return root;
+    }
+
     void print() {
         System.out.println(heap);
+    }
+
+    boolean isEmpty() {
+        return heap.isEmpty();
     }
 }
 
@@ -57,6 +89,8 @@ public class MaxHeap {
         maxHeap.insert(12);
         maxHeap.insert(1);
 
+        maxHeap.print();
+        System.out.println(maxHeap.delete());
         maxHeap.print();
     }
 }

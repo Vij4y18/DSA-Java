@@ -38,6 +38,7 @@ class HeapMin {
         }
     }
     void delete() {
+        int root = heap.get(0);
         heap.set(0,heap.get(heap.size()-1));
         heap.remove(heap.size()-1);
 
