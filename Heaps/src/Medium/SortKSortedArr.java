@@ -20,8 +20,8 @@ public class SortKSortedArr {
         }
 
         while (!heap.isEmpty()) {
-            nums[index] = heap.peek();
-            heap.poll();
+            nums[index] = heap.poll();;
+
             index++;
         }
 
