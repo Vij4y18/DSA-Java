@@ -6,12 +6,12 @@ import java.util.PriorityQueue;
 
 public class HandofStraights {
 
-    static boolean isNStraightHand (int[] hands, int groupSize) {
-        if (hands.length % groupSize != 0) return false;
+    static boolean isNStraightHand (int[] hand, int groupSize) {
+        if (hand.length % groupSize != 0) return false;
 
         PriorityQueue<Integer> heap = new PriorityQueue<>();
         HashMap<Integer,Integer> mpp = new HashMap<>();
-        for (int num : hands) {
+        for (int num : hand) {
             mpp.put(num, mpp.getOrDefault(num,0)+1);
         }
         for (int num : mpp.keySet()) {
