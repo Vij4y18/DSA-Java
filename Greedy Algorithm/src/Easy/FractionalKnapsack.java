@@ -27,6 +27,7 @@ public class FractionalKnapsack {
 
         int indx = 0;
         double res = 0;
+
         while (capacity > 0 && indx < val.length) {
             Item curr = arr[indx++];
 
