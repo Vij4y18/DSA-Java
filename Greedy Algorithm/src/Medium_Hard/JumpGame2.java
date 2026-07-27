@@ -2,20 +2,23 @@ package Medium_Hard;
 
 public class JumpGame2 {
 
-    static boolean canJump(int[] nums) {
-        if (nums.length == 1) return true;
+    static int canJump(int[] nums) {
+        int l = 0;
+        int r = 0;
+        int jump = 0;
 
-        int maxIndex = 0;
-        int goal = nums.length-1;
+        while (r < nums.length - 1) {
+            int farthest = 0;
 
-        for (int i=0; i<nums.length-1; i++) {
-            if (i > maxIndex) return false;
+            for (int ind=l; ind<=r; ind++) {
+                farthest = Math.max(farthest, ind + nums[ind]);
+            }
 
-            maxIndex = Math.max(maxIndex, nums[i]+i);
-
-            if (maxIndex >= goal) return true;
+            l = r+1;
+            r = farthest;
+            jump += 1;
         }
-        return false;
+        return jump;
     }
 
     public static void main(String[] args) {
