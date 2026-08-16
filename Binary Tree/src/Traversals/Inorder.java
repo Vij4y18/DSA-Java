@@ -31,7 +31,7 @@ public class Inorder {
 
         System.out.println(inorderTraversal(root));
         System.out.println();
-        // System.out.println(inorderIterative(root));
+        System.out.println(inorderIterative(root));
     }
 
     static List<Integer> inorderTraversal(TreeNode root) {
@@ -49,8 +49,24 @@ public class Inorder {
     }
 
     static List<Integer> inorderIterative (TreeNode root) {
-        Stack<Integer> st = new Stack<>();
+        Stack<TreeNode> st = new Stack<>();
         List<Integer> result = new ArrayList<>();
+
+        TreeNode curr = root;
+
+        while (curr != null || !st.isEmpty()) {
+
+            while (curr != null) {
+                st.push(curr);
+                curr = curr.left;
+            }
+
+            curr = st.pop();
+            result.add(curr.val);
+
+            curr = curr.right;
+        }
+
         return result;
     }
 }
