@@ -4,6 +4,7 @@ import Nodes.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class PostOrder {
     public static void main(String[] args) {
@@ -30,7 +31,7 @@ public class PostOrder {
 
         System.out.println(postorderTraversal(root));
         System.out.println();
-        // System.out.println(inorderIterative(root));
+        System.out.println(postorderIterative(root));
     }
 
     static List<Integer> postorderTraversal(TreeNode root) {
@@ -48,5 +49,30 @@ public class PostOrder {
         postorder(root.right, result); // traverse right
 
         result.add(root.val); // print root
+    }
+
+    static List<Integer> postorderIterative (TreeNode root) {
+        List<Integer> result = new ArrayList<>();
+        Stack<TreeNode> st1 = new Stack<>();
+        Stack<TreeNode> st2 = new Stack<>();
+
+        if (root == null) return result;
+
+        st1.push(root);
+
+        while (!st1.isEmpty()) {
+            TreeNode curr = st1.pop();
+
+            st2.push(curr);
+
+            if (curr.left != null) st1.push(curr.left);
+            if (curr.right != null) st1.push(curr.right);
+        }
+
+        while (!st2.isEmpty()) {
+            result.add(st2.pop().val);
+        }
+
+        return result;
     }
 }
