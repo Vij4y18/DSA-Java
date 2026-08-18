@@ -42,8 +42,8 @@ public class Diameter {
         int lh = height(root.left);
         int rh = height(root.right);
 
-        ans = Math.max(ans, lh+rh);
+        ans = Math.max(ans, lh+rh); // Update the Max Diameter
 
-        return Math.max(lh,rh)+1;
+        return Math.max(lh,rh)+1; // return the height
     }
 }
