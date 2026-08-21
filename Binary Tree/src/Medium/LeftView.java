@@ -7,8 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class RightView {
-
+public class LeftView {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
 
@@ -19,24 +18,24 @@ public class RightView {
         root.right.right = new TreeNode(4);
 
         System.out.println(rightSideViewIterative(root));
-        System.out.println(rightSideViewRecursive(root));
+        System.out.println(leftSideViewRecursive(root));
     }
 
-    static List<Integer> rightSideViewRecursive(TreeNode root) {
+    static List<Integer> leftSideViewRecursive(TreeNode root) {
         List<Integer> result = new ArrayList<>();
-        rightView(root, 0, result);
+        leftView(root, 0, result);
         return result;
     }
 
-    static void rightView (TreeNode root, int currentLevel, List<Integer> result) {
+    static void leftView (TreeNode root, int currentLevel, List<Integer> result) {
         if (root == null) return;
 
-        if (currentLevel == result.size()) { // first time i'm at this level
+        if (currentLevel == result.size()) {
             result.add(root.val);
         }
 
-        rightView(root.right, currentLevel+1, result);
-        rightView(root.left, currentLevel+1, result);
+        leftView(root.left, currentLevel+1, result);
+        leftView(root.right, currentLevel+1, result);
     }
 
     static List<Integer> rightSideViewIterative(TreeNode root) {
@@ -53,8 +52,8 @@ public class RightView {
             for (int i=0; i<size; i++) {
                 TreeNode curr = Q.poll();
 
-                if (curr.left != null) Q.offer(curr.left);
                 if (curr.right != null) Q.offer(curr.right);
+                if (curr.left != null) Q.offer(curr.left);
                 lastElement = curr.val;
             }
             result.add(lastElement);
