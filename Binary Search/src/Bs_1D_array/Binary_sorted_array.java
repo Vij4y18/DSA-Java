@@ -1,7 +1,7 @@
 package Bs_1D_array;
 
 public class Binary_sorted_array {
-    public static int binary(int[] nums, int n, int target) {
+    public static int binarySearch(int[] nums, int n, int target) {
         int low = 0;
         int high = n-1;
 
@@ -25,6 +25,6 @@ public class Binary_sorted_array {
         int target = 12;
         int n = arr.length;
 
-        System.out.println(binary(arr,n,target));
+        System.out.println(binarySearch(arr,n,target));
     }
 }
