@@ -40,6 +40,8 @@ public class RootToLeafPath {
 
         if(root.left == null && root.right == null) {
             ans.add(new ArrayList(result));
+            result.remove(result.size()-1); // back track
+            return;
         }
 
         searchPath(root.left, result);
