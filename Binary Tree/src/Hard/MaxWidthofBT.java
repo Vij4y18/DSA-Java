@@ -23,10 +23,10 @@ public class MaxWidthofBT {
         root.right = new TreeNode(3);
 
         root.left.left = new TreeNode(4);
-        root.left.right = new TreeNode(5);
+        root.right.right = new TreeNode(5);
 
-        root.left.right.left = new TreeNode(6);
-        root.left.right.right = new TreeNode(7);
+        root.left.left.left = new TreeNode(6);
+        root.right.right.right = new TreeNode(7);
 
         System.out.println(widthOfBinaryTree(root));
     }
@@ -49,6 +49,7 @@ public class MaxWidthofBT {
 
                 if (i == 0) firstIndex = index;
                 if (i == size-1) lastIndex = index;
+                index -= 1;  // preventing overflow
 
                 if (currNode.left != null) Q.offer(new Pair(currNode.left, 2*index+1));
                 if (currNode.right != null) Q.offer(new Pair(currNode.right, 2*index+2));
