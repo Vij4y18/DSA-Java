@@ -33,10 +33,10 @@ public class AllNodesDistanceK {
         TreeNode target = root.left; // node 5
         int k = 2;
 
-        System.out.println(result);
+        System.out.println(distanceK(root,target,k));
     }
 
-    public List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
+    static List<Integer> distanceK(TreeNode root, TreeNode target, int k) {
         Map<TreeNode, TreeNode> parent = new HashMap<>();
         Set<Integer> visited = new HashSet<>();
 
@@ -46,7 +46,7 @@ public class AllNodesDistanceK {
         return result;
     }
 
-    public void searchNodes (TreeNode root, Set<Integer> visited, Map<TreeNode, TreeNode> parent, int k) {
+    static void searchNodes (TreeNode root, Set<Integer> visited, Map<TreeNode, TreeNode> parent, int k) {
         if (root == null || visited.contains(root.val) || k < 0) return;
 
         if (k == 0) {
@@ -61,7 +61,7 @@ public class AllNodesDistanceK {
         searchNodes(root.right, visited, parent, k-1);
     }
 
-    public void findParent (TreeNode root, Map<TreeNode, TreeNode> parent) {
+    static void findParent (TreeNode root, Map<TreeNode, TreeNode> parent) {
         Queue<TreeNode> Q = new LinkedList<>();
         Q.offer(root);
 
