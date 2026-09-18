@@ -8,6 +8,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+
+//  We are using Preorder here but we can use any traversal technique, but just make sure to sure the same traversal that you used for serializing to deserialize .
+// it's like you reverse engineer to deserialize so don't use different traversal to serialize and deserialize
+
 public class Serialize_Deserialize_BT {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(1);
