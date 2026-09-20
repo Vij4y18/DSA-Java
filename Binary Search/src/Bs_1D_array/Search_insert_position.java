@@ -20,7 +20,7 @@ public class Search_insert_position {
         return ans+1;
     }
 
-    static void main(String[] args) {
+    public static void main(String[] args) {
         int[] arr = {2,3,4,6,7,8,19};
         int target = 10;
 
