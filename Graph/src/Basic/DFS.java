@@ -69,18 +69,18 @@ public class DFS {
     static ArrayList<Integer> dfs(ArrayList<ArrayList<Integer>> adj) {
         boolean[] vis = new boolean[adj.size()];
 
-        bfsHelper(0, vis, adj);
+        dfsHelper(0, vis, adj);
 
         return result;
     }
 
-    static void bfsHelper (Integer node, boolean[] vis, ArrayList<ArrayList<Integer>> adj) {
+    static void dfsHelper (Integer node, boolean[] vis, ArrayList<ArrayList<Integer>> adj) {
         vis[node] = true;
         result.add(node);
 
         for (Integer it : adj.get(node)) {
             if (!vis[it]) {
-                bfsHelper (it, vis, adj);
+                dfsHelper (it, vis, adj);
             }
         }
     }
