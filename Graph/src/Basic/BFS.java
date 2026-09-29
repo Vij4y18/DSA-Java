@@ -5,6 +5,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 public class BFS {
+
+    // Assuming the graph has zero based indexing or else this algo won't work
     static ArrayList<Integer> bfs(ArrayList<ArrayList<Integer>> adj) {
         // code here
         boolean[] visited = new boolean[adj.size()];
