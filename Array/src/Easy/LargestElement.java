@@ -18,8 +18,9 @@ public class LargestElement {
 
         return maxi;
     }
+
     public static void main(String[] args) {
-        int[] arr = {4,3,7,5,1};
+        int[] arr = {4,3,7,5,101};
         System.out.println(optimal(arr));
     }
 }
