@@ -18,22 +18,12 @@ public class BipartiteGraph {
 
     private static boolean isBipartite(int[][] graph) {
         int v = graph.length;
-        List<List<Integer>> adj = new ArrayList<>();
         int[] vis = new int[v];
         Arrays.fill(vis, -1);
 
-        //creating adjacency list
-        for (int i=0; i<v; i++) {
-            List<Integer> li = new ArrayList<>();
-            for (int j=0; j<graph[i].length; j++) {
-                li.add(graph[i][j]);
-            }
-            adj.add(li);
-        }
-
         for (int i=0; i<v; i++) {
             if (vis[i] == -1) {
-                if (!dfs (i, 1, vis, adj)) {
+                if (!dfs (i, 1, vis, graph)) {
                     return false;
                 }
             }
@@ -41,17 +31,17 @@ public class BipartiteGraph {
         return true;
     }
 
-    private static boolean dfs (int node, int mark, int[] vis, List<List<Integer>> adj) {
+    private static boolean dfs (int node, int mark, int[] vis, int[][] graph) {
         vis[node] = mark;
 
-        for (int neighbor : adj.get(node)) {
+        for (int neighbor : graph[node]) {
             if (vis[neighbor] == mark) {
                 return false;
             }
 
             if (vis[neighbor] == -1) {
                 int newMark = mark == 0 ? 1 : 0;
-                if (!dfs(neighbor, newMark, vis, adj)) {
+                if (!dfs(neighbor, newMark, vis, graph)) {
                     return false;
                 }
             }

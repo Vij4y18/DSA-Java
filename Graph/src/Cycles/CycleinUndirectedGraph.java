@@ -7,22 +7,6 @@ import java.util.List;
 // Link -> https://takeuforward.org/practice/dsa/detect-a-cycle-in-an-undirected-graph?sidebar=0
 
 public class CycleinUndirectedGraph {
-    public static void main(String[] args) {
-        int V = 6;
-        List<Integer>[] adj = new ArrayList[V];
-
-        for (int i = 0; i < V; i++) {
-            adj[i] = new ArrayList<>();
-        }
-        adj[0].addAll(Arrays.asList(1, 3));
-        adj[1].addAll(Arrays.asList(0, 2, 4));
-        adj[2].addAll(Arrays.asList(1, 5));
-        adj[3].addAll(Arrays.asList(0, 4));
-        adj[4].addAll(Arrays.asList(1, 3, 5));
-        adj[5].addAll(Arrays.asList(2, 4));
-
-        System.out.println(isCycle(V, adj));
-    }
 
     static boolean isCycle(int V, List<Integer>[] adj) {
         boolean[] vis = new boolean[V];
@@ -49,5 +33,22 @@ public class CycleinUndirectedGraph {
             }
         }
         return false;
+    }
+
+    public static void main(String[] args) {
+        int V = 6;
+        ArrayList<Integer>[] adj = new ArrayList[V];
+
+        for (int i = 0; i < V; i++) {
+            adj[i] = new ArrayList<>();
+        }
+        adj[0].addAll(Arrays.asList(1, 3));
+        adj[1].addAll(Arrays.asList(0, 2, 4));
+        adj[2].addAll(Arrays.asList(1, 5));
+        adj[3].addAll(Arrays.asList(0, 4));
+        adj[4].addAll(Arrays.asList(1, 3, 5));
+        adj[5].addAll(Arrays.asList(2, 4));
+
+        System.out.println(isCycle(V, adj));
     }
 }
