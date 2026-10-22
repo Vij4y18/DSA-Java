@@ -3,7 +3,7 @@ package Cycles;
 import java.util.*;
 
 // Using BFS here
-public class CycleinUndirectedGraph2 {
+public class CycleinUndirectedGraphBFS {
     public static void main(String[] args) {
         int V = 6;
         List<Integer>[] adj = new ArrayList[V];
