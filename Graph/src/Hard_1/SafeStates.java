@@ -2,8 +2,7 @@ package Hard_1;
 
 // Problem Link: https://leetcode.com/problems/find-eventual-safe-states/
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class SafeStates {
     private static boolean dfsCheck (int node, int[] vis, int[] visPath, int[] mark, int[][] graph) {
@@ -51,6 +50,54 @@ public class SafeStates {
         return result;
     }
 
+    private static List<Integer> eventualSafeNodesBFS(int[][] graph) {
+        int V = graph.length;;
+
+        // reversing the given adj graph to perform BFS
+        List<List<Integer>> adjRev = new ArrayList<>();
+        for (int i=0; i<V; i++) {
+            adjRev.add(new ArrayList<>());
+        }
+
+        for (int i=0; i<V; i++) {
+            for (int j=0; j<graph[i].length; j++) {
+                int neighbor = graph[i][j];
+                adjRev.get(neighbor).add(i);
+            }
+        }
+
+        Queue<Integer> q = new LinkedList<>();
+        List<Integer> res = new ArrayList<>();
+        int[] inDegree = new int[V];
+
+        for (int i=0; i<V; i++) {
+            for (int adj : adjRev.get(i)) {
+                inDegree[adj]++;
+            }
+        }
+
+        for (int i=0; i<V; i++) {
+            if (inDegree[i] == 0) {
+                q.offer(i);
+            }
+        }
+
+        while (!q.isEmpty()) {
+            int curr = q.poll();
+            res.add(curr);
+
+            for (int neighbor : adjRev.get(curr)) {
+                inDegree[neighbor]--;
+
+                if (inDegree[neighbor] == 0) {
+                    q.offer(neighbor);
+                }
+            }
+        }
+        Collections.sort(res);
+        return res;
+    }
+
     public static void main(String[] args) {
         int[][] graph = {
                 {1, 2},
@@ -61,7 +108,7 @@ public class SafeStates {
                 {},
                 {}
         };
-
+        // System.out.println(eventualSafeNodesBFS(graph));
         System.out.println(eventualSafeNodesDFS(graph));
     }
 }
