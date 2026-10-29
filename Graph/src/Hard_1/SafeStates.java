@@ -12,12 +12,10 @@ public class SafeStates {
 
         for (int neighbor : graph[node]) {
             if (vis[neighbor] == 0) {
-                if (dfsCheck(neighbor,vis,visPath,mark,graph)) {
+                if (dfsCheck(neighbor, vis, visPath, mark, graph)) {
                     return true;
                 }
-            }
-
-            if (visPath[neighbor] == 1) {
+            } else if (visPath[neighbor] == 1) {
                 return true;
             }
         }
