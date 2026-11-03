@@ -2,15 +2,7 @@ package Shortest_Path_Algorithms;
 import java.util.*;
 
 // problem link: https://takeuforward.org/practice/dsa/dijkstra's-algorithm
-class Pair {
-    int node;
-    int weight;
 
-    Pair(int node, int weight) {
-        this.node = node;
-        this.weight = weight;
-    }
-}
 
 public class Dijkstras_PQ {
     private static int[] dijkstraPQ(int V, ArrayList<ArrayList<Integer>> edges, int S) {
@@ -29,7 +21,7 @@ public class Dijkstras_PQ {
         }
 
         // Implementing Dijkstras using Min Heap
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b) -> Integer.compare(a.weight, b.weight));
+        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b) -> Integer.compare(a.distance, b.distance));
         int[] dist = new int[V];
         Arrays.fill(dist, Integer.MAX_VALUE);
         dist[S] = 0;
@@ -37,14 +29,14 @@ public class Dijkstras_PQ {
 
         while (!pq.isEmpty()) {
             int node = pq.peek().node;
-            int wt = pq.peek().weight;
+            int wt = pq.peek().distance;
             pq.remove();
 
             if (wt > dist[node]) continue;
 
             for (Pair neighbor : adj.get(node)) {
                 int nieghborNode = neighbor.node;
-                int neighborWt = neighbor.weight;
+                int neighborWt = neighbor.distance;
 
                 if ((long)wt+neighborWt < dist[nieghborNode]) {
                     dist[nieghborNode] = wt + neighborWt;
