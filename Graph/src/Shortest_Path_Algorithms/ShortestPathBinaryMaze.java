@@ -37,13 +37,12 @@ public class ShortestPathBinaryMaze {
             int row = curr.row;
             int col = curr.col;
 
-            if (row == n-1 && col == n-1) return dist[row][col];
-
             for (int i=0; i<8; i++) {
                 int nRow = row + delRow[i];
                 int nCol = col + delCol[i];
 
                 if (isValid(nRow,nCol,n) && grid[nRow][nCol] == 0 && dist[nRow][nCol] == Integer.MAX_VALUE) {
+                    if (nRow == n-1 && nRow == n-1) return dist[row][col]+1;
                     q.offer(new RowCol(nRow,nCol));
                     dist[nRow][nCol] = dist[row][col] + 1;
                 }
