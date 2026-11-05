@@ -8,4 +8,5 @@ class Pair {
         this.node = node;
         this.distance = distance;
     }
+
 }
