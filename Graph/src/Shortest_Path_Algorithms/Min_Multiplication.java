@@ -3,6 +3,7 @@ package Shortest_Path_Algorithms;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
+// https://www.geeksforgeeks.org/problems/minimum-multiplications-to-reach-end/1
 
 public class Min_Multiplication {
     private static int minSteps(int[] arr, int start, int end) {
