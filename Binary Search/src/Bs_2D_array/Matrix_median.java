@@ -49,7 +49,7 @@ public class Matrix_median {
         }
         return low;
     }
-    static void main(String[] args) {
+    public static void main(String[] args) {
         int[][] matrix = {
                 {1, 3, 5},
                 {2, 6, 9},
