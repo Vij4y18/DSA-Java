@@ -9,6 +9,7 @@ class TimePair {
     int node;
     Long time;
 
+
     TimePair (int node, long time) {
         this.node = node;
         this.time = time;
